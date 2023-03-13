@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch</title>
+</head>
+<body>
+<h1>Fetch</h1>
+<p id="fullName"></p>
+<script>
+  async function getName() {
+    const options = {
+      headers : new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    };
+    const response = await fetch('/api/name', options);
+    const name = await response.json();
+    document.getElementById('fullName').innerText = `Имя: ${name.firstName}\n Фамилия: ${name.lastName}\n Отчество: ${name.middleName}`;
+  }
+  getName();
+</script>
+</body>
+</html>

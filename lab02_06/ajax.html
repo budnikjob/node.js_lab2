@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery AJAX Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>jQuery AJAX Example</h1>
+<p id="fullName"></p>
+<script>
+
+    $.ajax({
+        url: '/api/name',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: function(data) {
+            $('#fullName').html(`Name: ${data.firstName} ${data.lastName} ${data.middleName}`);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            alert('Ошибка запроса: ' + textStatus + ', ' + errorThrown);
+        }
+    });
+</script>
+</body>
+</html>

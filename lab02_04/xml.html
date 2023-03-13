@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHTTPRequest</title>
+</head>
+<body>
+<h1>XMLHTTPRequest</h1>
+<p>ФИО: <span id="name"></span></p>
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/name', true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById('name').innerHTML = this.responseText;
+        }
+    };
+    xhr.send();
+</script>
+</body>
+</html>
